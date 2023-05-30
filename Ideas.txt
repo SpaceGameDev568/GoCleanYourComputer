@@ -1,0 +1,57 @@
+Temp Files Cleaner:
+
+    Allows you to remove all Temporary files in Appdata/Local/Temp
+
+Sysinfo Viewer:
+
+    Generates a sysinfo report which you can view
+
+Drive Cleaner:
+
+    Runs Disk Cleanup Utility in admin/system mode
+
+    c:\windows\SYSTEM32\cleanmgr.exe /d C:
+
+Disk Defragmenter:
+
+    Defragments your hard drives
+
+Winget program uninstaller
+
+    Uses winget utility to list all installed apps and lets you uninstall them
+
+Edge uninstaller
+
+    Uses ms-edge uninstaller to remove edge executable THEN cleanly removes edge setup files and registry entries
+
+OneDrive remover (Experimental)
+
+    Uninstalls OneDrive and resets user folders to defaults. This may cause user folders to disappear (not be deleted tho), but the outcome is currently unknown
+
+Remove widgets
+
+    Removes widgets app and disables the win + w hotkey
+
+Disable Bing Search
+
+    Disable Bing search results in windows search
+
+Fix boot resolution
+
+    On some systems the bootloader may appear visually stretched, this should resolve that
+
+Disable Telemetry
+
+    Disables Windows 10/11 Involuntary Data Collection
+
+    HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection
+
+    dmwappushsvc
+
+    DiagTrack
+
+Restore System Image
+
+    DISM /online /cleanup-image /restorehealth
+
+    sfc /scannow

@@ -29,6 +29,18 @@ namespace GoCleanYourComputer
         private void CleanButton_Click(object sender, RoutedEventArgs e)
         {
             CleanButton.Content = "Clicked!";
+            
+            // System cannot find dir yet
+            string strCmdText;
+            strCmdText= "/nfo %USERPROFILE%/Documents/sysinfo.nfo";
+            System.Diagnostics.Process.Start("C:/Windows/SysWOW64/Msinfo32.exe",strCmdText);
+        }
+        
+        private void RMTempFiles_Click(object sender, RoutedEventArgs e)
+        {
+            CleanButton.Content = "Clicked!";
+            
+            System.Diagnostics.Process.Start("CMD.exe", "/K rmdir");
         }
     }
 }

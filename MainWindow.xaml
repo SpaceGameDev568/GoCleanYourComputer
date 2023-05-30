@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoCleanYourComputer"
         mc:Ignorable="d"
-        Title="GoCleanYourComputer" Height="600" Width="400">
+        Title="GoCleanYourComputer" Height="800" Width="600">
     <Grid>
-    <Button x:Name="CleanButton" VerticalAlignment="Center" HorizontalAlignment="Center" Click="CleanButton_Click">Hello World!</Button>
+        <TextBox x:Name="TextBox1" HorizontalAlignment="Center" VerticalAlignment="Top">Hello World!</TextBox>
+        <Button x:Name="CleanButton" VerticalAlignment="Center" HorizontalAlignment="Center" Click="CleanButton_Click">Clean</Button>
+        <Button x:Name="RMTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
     </Grid>
 </Window>
