@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="GoCleanYourComputer" Height="800" Width="600">
     <Grid>
-        <TextBox x:Name="TextBox1" HorizontalAlignment="Center" VerticalAlignment="Top">Hello World!</TextBox>
-        <Button x:Name="CleanButton" VerticalAlignment="Center" HorizontalAlignment="Center" Click="CleanButton_Click">Clean</Button>
+        <StackPanel>
+        <TextBox x:Name="TextBox1" Width="200px" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top">Hello World!</TextBox>
+        <Button x:Name="SysinfoButton" Width="200px" Height="50px" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SysinfoButton_Click">Get System Info</Button>
         <Button x:Name="RMTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
+        <Button x:Name="CleanDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="CleanDrive_Click">Clean Windows Files</Button>
+        <Button x:Name="DefragButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Defrag_Click">Defragment Hard Drives</Button>
+        </StackPanel>
     </Grid>
 </Window>

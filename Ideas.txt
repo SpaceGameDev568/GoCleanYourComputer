@@ -8,7 +8,7 @@
 
     cd /d %TEMP%&echo y|del *
 
-Sysinfo Viewer:
+✓ Sysinfo Viewer:
 
     Generates a sysinfo report which you can view
 
@@ -65,3 +65,5 @@ Restore System Image
 Remove initial bloat apps
 
     Remove promoted apps winblows installs by default
+
+I've been coding for 6 hours straight ~~pls send halp~~

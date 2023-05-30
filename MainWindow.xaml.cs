@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Security.Principal;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,28 +26,67 @@ namespace GoCleanYourComputer
     /// </summary>
     public partial class MainWindow : Window
     {
+        int processStartDelay = 200;
         public MainWindow()
         {
             InitializeComponent();
             
         }
 
-        private void CleanButton_Click(object sender, RoutedEventArgs e)
+        private void SysinfoButton_Click(object sender, RoutedEventArgs e)
         {
-            CleanButton.Content = "Clicked!";
+            SysinfoButton.Content = "Running...";
+            
+            Thread.Sleep(processStartDelay);
             
             // System cannot find dir yet
-            string strCmdText;
-            strCmdText= "/nfo %USERPROFILE%/Documents/sysinfo.nfo";
-            System.Diagnostics.Process.Start("C:/Windows/SysWOW64/Msinfo32.exe",strCmdText);
+            var SysinfoProcess = System.Diagnostics.Process.Start("C:/Windows/SysWOW64/Msinfo32.exe", " /nfo sysinfo.nfo");
+            //SysinfoProcess.WaitForExit();
+            
+            // Doesn't work rn
+            SysinfoButton.Content = "Done!";
         }
         
         private void RMTempFiles_Click(object sender, RoutedEventArgs e)
         {
-            CleanButton.Content = "Clicked!";
+            RMTempFilesButton.Content = "Running...";
             
-            System.Diagnostics.Process.Start("CMD.exe", "/K cd /d %LOCALAPPDATA%&echo y|rmdir Temp /S");
+            Thread.Sleep(processStartDelay);
             
+            var RMTempFilesProcess = System.Diagnostics.Process.Start("CMD.exe", "/K cd /d %LOCALAPPDATA%&echo y|rmdir Temp /S");
+            //RMTempFilesProcess.WaitForExit();
+            
+            // Doesn't work rn
+            RMTempFilesButton.Content = "Done!";
+        }
+        
+        private void CleanDrive_Click(object sender, RoutedEventArgs e)
+        {
+            CleanDriveButton.Content = "Running...";
+            
+            Thread.Sleep(processStartDelay);
+            
+            var CleanDriveProcess = System.Diagnostics.Process.Start("cleanmgr.exe", "/sagerun:1");
+            //CleanDriveProcess.WaitForExit();
+            
+            // Doesn't work rn
+            CleanDriveButton.Content = "Done!";
+        }
+        
+        private void Defrag_Click(object sender, RoutedEventArgs e)
+        {
+            DefragButton.Content = "Running...";
+            
+            Thread.Sleep(processStartDelay);
+            
+            // Info about cmd arguments:
+            // https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/defrag
+            
+            var DefragProcess = System.Diagnostics.Process.Start("defrag.exe", "/C /D /G /H");
+            //DefragProcess.WaitForExit();
+            
+            // Doesn't work rn
+            DefragButton.Content = "Done!";
         }
     }
 }
