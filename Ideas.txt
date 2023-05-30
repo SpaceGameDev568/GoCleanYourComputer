@@ -12,13 +12,13 @@
 
     Generates a sysinfo report which you can view
 
-Drive Cleaner:
+✓ Drive Cleaner:
 
     Runs Disk Cleanup Utility in admin/system mode
 
     c:\windows\SYSTEM32\cleanmgr.exe /d C:
 
-Disk Defragmenter:
+✓ Disk Defragmenter:
 
     Defragments your hard drives
 
