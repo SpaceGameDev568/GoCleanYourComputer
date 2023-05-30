@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,8 @@ namespace GoCleanYourComputer
         {
             CleanButton.Content = "Clicked!";
             
-            System.Diagnostics.Process.Start("CMD.exe", "/K rmdir");
+            System.Diagnostics.Process.Start("CMD.exe", "/K cd /d %LOCALAPPDATA%&echo y|rmdir Temp /S");
+            
         }
     }
 }

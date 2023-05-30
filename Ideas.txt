@@ -1,6 +1,12 @@
-Temp Files Cleaner:
+✓ Temp Files Cleaner:
 
     Allows you to remove all Temporary files in Appdata/Local/Temp
+
+    %APPDATA%\ohfuckplsdontnukeme
+
+    %TEMP%
+
+    cd /d %TEMP%&echo y|del *
 
 Sysinfo Viewer:
 
@@ -55,3 +61,7 @@ Restore System Image
     DISM /online /cleanup-image /restorehealth
 
     sfc /scannow
+
+Remove initial bloat apps
+
+    Remove promoted apps winblows installs by default
