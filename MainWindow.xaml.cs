@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
+using Path = System.IO.Path;
 
 namespace GoCleanYourComputer
 {
@@ -204,8 +205,6 @@ namespace GoCleanYourComputer
 
         private void RMOneDrive_Click(object sender, RoutedEventArgs e)
         {
-            // Fails to uninstall for some reason
-            
             // Prepare the process to run
             var killOneDriveArguments = new ProcessStartInfo
             {
@@ -221,11 +220,24 @@ namespace GoCleanYourComputer
             };
             
             // Prepare the process to run
-            var processArguments = new ProcessStartInfo
+            var oneDriveSyncArguments = new ProcessStartInfo
             {
                 
                 // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe",
+
+                // Enter the executable to run, including the complete path
+                FileName = "winget.exe",
+                // Do you want to show a console window?
+                //WindowStyle = ProcessWindowStyle.Hidden,
+                //CreateNoWindow = true
+            };
+            
+            var oneDriveClientArguments = new ProcessStartInfo
+            {
+                
+                // Enter in the command line arguments, everything you would enter after the executable name itself
+                Arguments = "uninstall Microsoft.OneDrive",
 
                 // Enter the executable to run, including the complete path
                 FileName = "winget.exe",
@@ -247,19 +259,27 @@ namespace GoCleanYourComputer
                 {
                     proc?.WaitForExit();
                 }
-            }).Start();
-            
-            // Run the external process & wait for it to finish
-            new Thread(() => 
-            {
+                
                 Thread.CurrentThread.IsBackground = true; 
-                using (Process? proc = Process.Start(processArguments))
+                using (Process? proc = Process.Start(oneDriveSyncArguments))
                 {
                     proc?.WaitForExit();
-
-                    CompletedTask();
                 }
+                
+                Thread.CurrentThread.IsBackground = true; 
+                using (Process? proc = Process.Start(oneDriveClientArguments))
+                {
+                    proc?.WaitForExit();
+                }
+                
+                // FUTURE FEATURE: Copy files to new directory
+                
+                // Note: This only copies files from the OneDrive directory, but does not delete the old ones to avoid potential data loss. I might add this as a warning toggle later, but for now it may cause more unintentional bloat.
+
+                CompletedTask();
+                
             }).Start();
+            
 
             void CompletedTask()
             {
@@ -457,7 +477,7 @@ namespace GoCleanYourComputer
                 //CreateNoWindow = true
             };
 
-            InfoBox.Text = "Checking system image (This could take a while)...";
+            InfoBox.Text = "Checking system image... (This could take a while)";
             RestoreSystemImageButton.Content = "Running...";
 
             // Run the external process & wait for it to finish
