@@ -37,15 +37,12 @@ namespace GoCleanYourComputer
 
         private void SysinfoButton_Click(object sender, RoutedEventArgs e)
         {
-
             // Prepare the process to run
             var processArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/nfo sysinfo.nfo",
-                // Enter the executable to run, including the complete path
                 FileName = "C:/Windows/SysWOW64/Msinfo32.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -53,7 +50,7 @@ namespace GoCleanYourComputer
             InfoBox.Text = "Retrieving System Info...";
             SysinfoButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -83,19 +80,17 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var processArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/K cd /d %LOCALAPPDATA%&echo y|rmdir Temp /S&exit",
-                // Enter the executable to run, including the complete path
                 FileName = "CMD.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
 
             InfoBox.Text = "Removing temporary files...";
-            RMTempFilesButton.Content = "Running...";
+            RmTempFilesButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -111,9 +106,9 @@ namespace GoCleanYourComputer
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    RMTempFilesButton.Content = "Done!";
+                    RmTempFilesButton.Content = "Done!";
                     InfoBox.Text = "Successfully removed temporary files.";
-                    RMTempFilesButton.IsHitTestVisible = false;
+                    RmTempFilesButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -123,13 +118,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var processArguments = new ProcessStartInfo
             {
-                // NOTE: I SHOULD MAKE THIS ONLY SCAN WINDOWS DRIVE IN FUTURE
-                
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/sagerun:1&exit",
-                // Enter the executable to run, including the complete path
                 FileName = "cleanmgr.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -137,7 +128,7 @@ namespace GoCleanYourComputer
             InfoBox.Text = "Cleaning up Windows files on your drives";
             CleanDriveButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -168,11 +159,9 @@ namespace GoCleanYourComputer
                 // Info about cmd arguments:
                 // https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/defrag
                 
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/C /D /G /H",
-                // Enter the executable to run, including the complete path
                 FileName = "defrag.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -180,7 +169,7 @@ namespace GoCleanYourComputer
             InfoBox.Text = "Defragmenting your hard drives...";
             DefragButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -208,13 +197,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var killOneDriveArguments = new ProcessStartInfo
             {
-                
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/IM OneDrive.exe /F",
-
-                // Enter the executable to run, including the complete path
                 FileName = "taskkill",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -222,36 +207,28 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var oneDriveSyncArguments = new ProcessStartInfo
             {
-                
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe",
-
-                // Enter the executable to run, including the complete path
                 FileName = "winget.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
             
             var oneDriveClientArguments = new ProcessStartInfo
             {
-                
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "uninstall Microsoft.OneDrive",
-
-                // Enter the executable to run, including the complete path
                 FileName = "winget.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
 
             InfoBox.Text = "Removing Microsoft OneDrive...";
-            RMOneDriveButton.Content = "Running...";
+            RmOneDriveButton.Content = "Running...";
             
             RegistryKey? userDirKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders", true);
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -295,9 +272,9 @@ namespace GoCleanYourComputer
                         userDirKey.Close();
                     }
                     
-                    RMOneDriveButton.Content = "Done!";
+                    RmOneDriveButton.Content = "Done!";
                     InfoBox.Text = "Successfully removed Microsoft OneDrive.";
-                    RMOneDriveButton.IsHitTestVisible = false;
+                    RmOneDriveButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -307,19 +284,17 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var processArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "uninstall MicrosoftWindows.Client.WebExperience_cw5n1h2txyewy",
-                // Enter the executable to run, including the complete path
                 FileName = "winget",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
 
             InfoBox.Text = "Removing Widgets app...";
-            RMWidgetsButton.Content = "Running...";
+            RmWidgetsButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -335,9 +310,9 @@ namespace GoCleanYourComputer
             {
                 this.Dispatcher.Invoke(() =>
                 {
-                    RMWidgetsButton.Content = "Done!";
+                    RmWidgetsButton.Content = "Done!";
                     InfoBox.Text = "Successfully removed Widgets app.";
-                    RMWidgetsButton.IsHitTestVisible = false;
+                    RmWidgetsButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -367,11 +342,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var processArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "-set {globalsettings} highestmode on",
-                // Enter the executable to run, including the complete path
                 FileName = "bcdedit.exe",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -379,7 +352,7 @@ namespace GoCleanYourComputer
             InfoBox.Text = "Applying bootloader settings...";
             FixBootloaderResButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -409,11 +382,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var diagTrackArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "config DiagTrack start= disabled",
-                // Enter the executable to run, including the complete path
                 FileName = "sc",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -427,7 +398,7 @@ namespace GoCleanYourComputer
                 key?.Close();
             }
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -456,11 +427,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var dismArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/online /cleanup-image /restorehealth",
-                // Enter the executable to run, including the complete path
                 FileName = "DISM",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -468,11 +437,9 @@ namespace GoCleanYourComputer
             // Prepare the process to run
             var sfcArguments = new ProcessStartInfo
             {
-                // Enter in the command line arguments, everything you would enter after the executable name itself
                 Arguments = "/scannow",
-                // Enter the executable to run, including the complete path
                 FileName = "SFC",
-                // Do you want to show a console window?
+                // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
             };
@@ -480,7 +447,7 @@ namespace GoCleanYourComputer
             InfoBox.Text = "Checking system image... (This could take a while)";
             RestoreSystemImageButton.Content = "Running...";
 
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 
@@ -490,7 +457,7 @@ namespace GoCleanYourComputer
                 }
             }).Start();
             
-            // Run the external process & wait for it to finish
+            // Run command line with args
             new Thread(() => 
             {
                 Thread.CurrentThread.IsBackground = true; 

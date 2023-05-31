@@ -1,7 +1,7 @@
 # GoCleanYourComputer
 A simple computer cleaning tool for Windows.
 
-Work in progress.
+My first C# app for Windows, still a work in progress, and definitely not production ready.
 
 To-Do:
 
