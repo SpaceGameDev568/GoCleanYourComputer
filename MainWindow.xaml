@@ -28,12 +28,11 @@
         <Button x:Name="RMTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
         <Button x:Name="CleanDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="CleanDrive_Click">Clean Windows Files</Button>
         <Button x:Name="DefragButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Defrag_Click">Defragment Hard Drives</Button>
-        <Button x:Name="RMEdgeButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMEdge_Click">Remove Microsoft Edge</Button>
         <Button x:Name="RMOneDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMOneDrive_Click">Remove Microsoft OneDrive</Button>
         <Button x:Name="RMWidgetsButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMWidgets_Click">Remove Widgets</Button>
-        <Button x:Name="NoBingSearchButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center">Disable Bing Search Results</Button>
+        <Button x:Name="NoBingSearchButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="NoBingSearch_Click">Disable Bing Search Results</Button>
         <Button x:Name="FixBootloaderResButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="FixBootloaderRes_Click">Fix Bootloader Distortion</Button>
-        <Button x:Name="DisableTelemetryResButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center">Disable Invasive Telemetry</Button>
+        <Button x:Name="DisableTelemetryButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="DisableTelemetry_Click">Disable Invasive Telemetry</Button>
         <Button x:Name="RestoreSystemImageButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RestoreSystemImage_Click">Restore System Image</Button>
     </StackPanel>
 </Window>

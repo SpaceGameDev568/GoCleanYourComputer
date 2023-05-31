@@ -22,19 +22,15 @@
 
     Defragments your hard drives
 
-Edge uninstaller
-
-    Uses ms-edge uninstaller to remove edge executable THEN cleanly removes edge setup files and registry entries
-
-OneDrive remover (Experimental)
+✓ OneDrive remover (Experimental)
 
     Uninstalls OneDrive and resets user folders to defaults. This may cause user folders to disappear (not be deleted tho), but the outcome is currently unknown
 
-Remove widgets
+✓ Remove widgets
 
     Removes widgets app and disables the win + w hotkey
 
-Disable Bing Search
+✓ Disable Bing Search
 
     Disable Bing search results in windows search
 
@@ -59,6 +55,12 @@ Restore System Image
     sfc /scannow
 
 TO-DO:
+
+Edge uninstaller
+
+    Uses ms-edge uninstaller to remove edge executable THEN cleanly removes edge setup files and registry entries
+
+    https://github.com/ShadowWhisperer/Remove-MS-Edge/blob/main/_Source/remove.py
 
 Remove initial bloat apps
 
