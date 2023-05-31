@@ -6,28 +6,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoCleanYourComputer"
         mc:Ignorable="d"
-        Title="GoCleanYourComputer" Height="800" Width="600">
+        Title="GoCleanYourComputer" Height="800" Width="600" MinHeight="800" MinWidth="600">
     <Window.Resources>
         <Style TargetType="Button">
-        <Setter Property="BorderThickness" Value="5" />
-        <Setter Property="Foreground" Value="Black" />
-        <Setter Property="BorderBrush" >
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                    <GradientStop Color="Yellow" Offset="0.0" />
-                    <GradientStop Color="Red" Offset="0.25" />
-                    <GradientStop Color="Blue" Offset="0.75" />
-                    <GradientStop Color="LimeGreen" Offset="1.0" />
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-    </Style>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontFamily" Value="Jetbrains Mono"/>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#ffffff" />
+        </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Background" Value="#202020"/>
+        </Style>
     </Window.Resources>
     <StackPanel>
-        <TextBox x:Name="TextBox1" Width="200px" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top">Hello World!</TextBox>
+        <TextBlock x:Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Jetbrains Mono" FontSize="20" FontWeight="Bold">GoCleanYourComputer</TextBlock>
+        <TextBlock x:Name="HeaderSubText" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">A simple computer cleaning tool.</TextBlock>
+        <TextBlock x:Name="InfoBox" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">No actions running right now.</TextBlock>
         <Button x:Name="SysinfoButton" Width="200px" Height="50px" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SysinfoButton_Click">Get System Info</Button>
         <Button x:Name="RMTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
         <Button x:Name="CleanDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="CleanDrive_Click">Clean Windows Files</Button>
         <Button x:Name="DefragButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Defrag_Click">Defragment Hard Drives</Button>
-        </StackPanel>
+        <Button x:Name="RMEdgeButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMEdge_Click">Remove Microsoft Edge</Button>
+        <Button x:Name="RMOneDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMOneDrive_Click">Remove Microsoft OneDrive</Button>
+        <Button x:Name="RMWidgetsButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMWidgets_Click">Remove Widgets</Button>
+        <Button x:Name="NoBingSearchButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center">Disable Bing Search Results</Button>
+        <Button x:Name="FixBootloaderResButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="FixBootloaderRes_Click">Fix Bootloader Distortion</Button>
+        <Button x:Name="DisableTelemetryResButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center">Disable Invasive Telemetry</Button>
+        <Button x:Name="RestoreSystemImageButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RestoreSystemImage_Click">Restore System Image</Button>
+    </StackPanel>
 </Window>

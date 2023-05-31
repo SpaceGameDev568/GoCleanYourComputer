@@ -1,0 +1,9 @@
+Save to config
+
+    Once a button has been used save it to a config so it cannot be used again AND add a config reset button
+
+    name config after pc's name to allow different configs per pc
+
+Embed Terminal Window
+
+    Embed a console in the app so you can view the logs

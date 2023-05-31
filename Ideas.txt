@@ -1,3 +1,7 @@
+✓ Sysinfo Viewer:
+
+    Generates a sysinfo report which you can view
+
 ✓ Temp Files Cleaner:
 
     Allows you to remove all Temporary files in Appdata/Local/Temp
@@ -8,10 +12,6 @@
 
     cd /d %TEMP%&echo y|del *
 
-✓ Sysinfo Viewer:
-
-    Generates a sysinfo report which you can view
-
 ✓ Drive Cleaner:
 
     Runs Disk Cleanup Utility in admin/system mode
@@ -21,10 +21,6 @@
 ✓ Disk Defragmenter:
 
     Defragments your hard drives
-
-Winget program uninstaller
-
-    Uses winget utility to list all installed apps and lets you uninstall them
 
 Edge uninstaller
 
@@ -62,6 +58,12 @@ Restore System Image
 
     sfc /scannow
 
+TO-DO:
+
 Remove initial bloat apps
 
     Remove promoted apps winblows installs by default
+
+Winget program uninstaller
+
+    Uses winget utility to list all installed apps and lets you uninstall them
