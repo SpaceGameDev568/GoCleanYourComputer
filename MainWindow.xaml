@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GoCleanYourComputer"
         mc:Ignorable="d"
-        Title="GoCleanYourComputer" Height="800" Width="600" MinHeight="800" MinWidth="600">
+        Title="GoCleanYourComputer" Height="800" Width="400" MinHeight="800" MinWidth="400">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="Black" />
@@ -19,8 +19,11 @@
         <Style TargetType="StackPanel">
             <Setter Property="Background" Value="#202020"/>
         </Style>
+        <Style TargetType="local:MainWindow">
+            <Setter Property="Background" Value="#202020"/>
+        </Style>
     </Window.Resources>
-    <StackPanel>
+    <StackPanel VerticalAlignment="Center">
         <TextBlock x:Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Jetbrains Mono" FontSize="20" FontWeight="Bold">GoCleanYourComputer</TextBlock>
         <TextBlock x:Name="HeaderSubText" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">A simple computer cleaning tool.</TextBlock>
         <TextBlock x:Name="InfoBox" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">No actions running right now.</TextBlock>
