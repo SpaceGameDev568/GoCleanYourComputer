@@ -8,10 +8,12 @@
         mc:Ignorable="d"
         Title="GoCleanYourComputer" Height="800" Width="400" MinHeight="800" MinWidth="400">
     <Window.Resources>
+        <FontFamily x:Key="Jetbrains Mono" >/Fonts/#Jetbrains Mono</FontFamily>
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontFamily" Value="Jetbrains Mono"/>
+            <Setter Property="TextElement.FontFamily" Value="Fonts/#Jetbrains Mono"/>
             <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="FontWeight" Value="Normal"></Setter>
         </Style>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="#ffffff" />
@@ -24,18 +26,18 @@
         </Style>
     </Window.Resources>
     <StackPanel VerticalAlignment="Center">
-        <TextBlock x:Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Jetbrains Mono" FontSize="20" FontWeight="Bold">GoCleanYourComputer</TextBlock>
-        <TextBlock x:Name="HeaderSubText" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">A simple computer cleaning tool.</TextBlock>
-        <TextBlock x:Name="InfoBox" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" FontFamily="Jetbrains Mono" FontSize="12">No actions running right now.</TextBlock>
+        <TextBlock x:Name="HeaderText" HorizontalAlignment="Center" VerticalAlignment="Top" TextElement.FontFamily="Fonts/#Jetbrains Mono" FontSize="20" FontWeight="Bold" FontStyle="Normal" >GoCleanYourComputer</TextBlock>
+        <TextBlock x:Name="HeaderSubText" Height="50px" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" TextElement.FontFamily="Fonts/#Jetbrains Mono" FontSize="12" FontStyle="Normal" FontWeight="Regular">A simple computer cleaning tool.</TextBlock>
+        <TextBlock x:Name="InfoBox" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="center" TextElement.FontFamily="Fonts/#Jetbrains Mono" FontSize="12" FontStyle="Normal" FontWeight="Regular">No actions running right now.</TextBlock>
         <Button x:Name="SysinfoButton" Width="200px" Height="50px" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SysinfoButton_Click">Get System Info</Button>
         <Button x:Name="RmTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
         <Button x:Name="CleanDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="CleanDrive_Click">Clean Windows Files</Button>
         <Button x:Name="DefragButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Defrag_Click">Defragment Hard Drives</Button>
-        <Button x:Name="RmOneDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMOneDrive_Click">Remove Microsoft OneDrive</Button>
+        <!--<Button x:Name="RmOneDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMOneDrive_Click">Remove Microsoft OneDrive</Button>-->
         <Button x:Name="RmWidgetsButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMWidgets_Click">Remove Widgets</Button>
+        <Button x:Name="DisableTelemetryButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="DisableTelemetry_Click">Disable Invasive Telemetry</Button>
         <Button x:Name="NoBingSearchButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="NoBingSearch_Click">Disable Bing Search Results</Button>
         <Button x:Name="FixBootloaderResButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="FixBootloaderRes_Click">Fix Bootloader Distortion</Button>
-        <Button x:Name="DisableTelemetryButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="DisableTelemetry_Click">Disable Invasive Telemetry</Button>
         <Button x:Name="RestoreSystemImageButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RestoreSystemImage_Click">Restore System Image</Button>
     </StackPanel>
 </Window>

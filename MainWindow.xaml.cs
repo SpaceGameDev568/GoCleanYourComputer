@@ -33,6 +33,8 @@ namespace GoCleanYourComputer
         {
             InitializeComponent();
             
+            Console.WriteLine("Welcome to GoCleanYourComputer! This read-only terminal window will display the status of currently running operations.");
+            
         }
 
         private void SysinfoButton_Click(object sender, RoutedEventArgs e)
@@ -49,6 +51,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Retrieving System Info...";
             SysinfoButton.Content = "Running...";
+            SysinfoButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -67,12 +70,11 @@ namespace GoCleanYourComputer
                 this.Dispatcher.Invoke(() =>
                 {
                     SysinfoButton.Content = "Done!";
-                    InfoBox.Text = "System info exported to sysinfo.nfo in the app directory.";
-                    SysinfoButton.IsHitTestVisible = false;
+                    InfoBox.Text = "System info exported to file: sysinfo.nfo.";
                 });
             }
 
-            // WIP: COPY SYSINFO TO DOCUMENTS DIR IN THE FUTURE
+            // COPY SYSINFO TO DOCUMENTS DIR IN THE FUTURE
         }
         
         private void RMTempFiles_Click(object sender, RoutedEventArgs e)
@@ -89,6 +91,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Removing temporary files...";
             RmTempFilesButton.Content = "Running...";
+            RmTempFilesButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -108,7 +111,6 @@ namespace GoCleanYourComputer
                 {
                     RmTempFilesButton.Content = "Done!";
                     InfoBox.Text = "Successfully removed temporary files.";
-                    RmTempFilesButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -127,6 +129,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Cleaning up Windows files on your drives";
             CleanDriveButton.Content = "Running...";
+            CleanDriveButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -146,7 +149,6 @@ namespace GoCleanYourComputer
                 {
                     CleanDriveButton.Content = "Done!";
                     InfoBox.Text = "Successfully cleaned Windows files.";
-                    CleanDriveButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -168,6 +170,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Defragmenting your hard drives...";
             DefragButton.Content = "Running...";
+            DefragButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -187,97 +190,95 @@ namespace GoCleanYourComputer
                 {
                     DefragButton.Content = "Done!";
                     InfoBox.Text = "Successfully defragmented your hard drives.";
-                    DefragButton.IsHitTestVisible = false;
                 });
             }
         }
 
-        private void RMOneDrive_Click(object sender, RoutedEventArgs e)
-        {
-            // Prepare the process to run
-            var killOneDriveArguments = new ProcessStartInfo
-            {
-                Arguments = "/IM OneDrive.exe /F",
-                FileName = "taskkill",
-                // Hide console window
-                //WindowStyle = ProcessWindowStyle.Hidden,
-                //CreateNoWindow = true
-            };
-            
-            // Prepare the process to run
-            var oneDriveSyncArguments = new ProcessStartInfo
-            {
-                Arguments = "uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe",
-                FileName = "winget.exe",
-                // Hide console window
-                //WindowStyle = ProcessWindowStyle.Hidden,
-                //CreateNoWindow = true
-            };
-            
-            var oneDriveClientArguments = new ProcessStartInfo
-            {
-                Arguments = "uninstall Microsoft.OneDrive",
-                FileName = "winget.exe",
-                // Hide console window
-                //WindowStyle = ProcessWindowStyle.Hidden,
-                //CreateNoWindow = true
-            };
-
-            InfoBox.Text = "Removing Microsoft OneDrive...";
-            RmOneDriveButton.Content = "Running...";
-            
-            RegistryKey? userDirKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders", true);
-
-            // Run command line with args
-            new Thread(() => 
-            {
-                Thread.CurrentThread.IsBackground = true; 
-                using (Process? proc = Process.Start(killOneDriveArguments))
-                {
-                    proc?.WaitForExit();
-                }
-                
-                Thread.CurrentThread.IsBackground = true; 
-                using (Process? proc = Process.Start(oneDriveSyncArguments))
-                {
-                    proc?.WaitForExit();
-                }
-                
-                Thread.CurrentThread.IsBackground = true; 
-                using (Process? proc = Process.Start(oneDriveClientArguments))
-                {
-                    proc?.WaitForExit();
-                }
-                
-                // FUTURE FEATURE: Copy files to new directory
-                
-                // Note: This only copies files from the OneDrive directory, but does not delete the old ones to avoid potential data loss. I might add this as a warning toggle later, but for now it may cause more unintentional bloat.
-
-                CompletedTask();
-                
-            }).Start();
-            
-
-            void CompletedTask()
-            {
-                this.Dispatcher.Invoke(() =>
-                {
-                    if (userDirKey != null)
-                    {
-                        userDirKey.SetValue("Desktop", "%USERPROFILE%/Desktop", RegistryValueKind.String);
-                        userDirKey.SetValue("My Music", "%USERPROFILE%/Music", RegistryValueKind.String);
-                        userDirKey.SetValue("My Pictures", "%USERPROFILE%/Pictures", RegistryValueKind.String);
-                        userDirKey.SetValue("My Video", "%USERPROFILE%/Videos", RegistryValueKind.String);
-                        userDirKey.SetValue("Personal", "%USERPROFILE%/Documents", RegistryValueKind.String);
-                        userDirKey.Close();
-                    }
-                    
-                    RmOneDriveButton.Content = "Done!";
-                    InfoBox.Text = "Successfully removed Microsoft OneDrive.";
-                    RmOneDriveButton.IsHitTestVisible = false;
-                });
-            }
-        }
+        //private void RMOneDrive_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Prepare the process to run
+        //    var killOneDriveArguments = new ProcessStartInfo
+        //    {
+        //        Arguments = "/IM OneDrive.exe /F",
+        //        FileName = "taskkill",
+        //        // Hide console window
+        //        //WindowStyle = ProcessWindowStyle.Hidden,
+        //        //CreateNoWindow = true
+        //    };
+        //    
+        //    // Prepare the process to run
+        //    var oneDriveSyncArguments = new ProcessStartInfo
+        //    {
+        //        Arguments = "uninstall Microsoft.OneDriveSync_8wekyb3d8bbwe",
+        //        FileName = "winget.exe",
+        //        // Hide console window
+        //        //WindowStyle = ProcessWindowStyle.Hidden,
+        //        //CreateNoWindow = true
+        //    };
+        //    
+        //    var oneDriveClientArguments = new ProcessStartInfo
+        //    {
+        //        Arguments = "uninstall Microsoft.OneDrive",
+        //        FileName = "winget.exe",
+        //        // Hide console window
+        //        //WindowStyle = ProcessWindowStyle.Hidden,
+        //        //CreateNoWindow = true
+        //    };
+//
+        //    InfoBox.Text = "Removing Microsoft OneDrive...";
+        //    RmOneDriveButton.Content = "Running...";
+        //    
+        //    RegistryKey? userDirKey = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders", true);
+//
+        //    // Run command line with args
+        //    new Thread(() => 
+        //    {
+        //        Thread.CurrentThread.IsBackground = true; 
+        //        using (Process? proc = Process.Start(killOneDriveArguments))
+        //        {
+        //            proc?.WaitForExit();
+        //        }
+        //        
+        //        Thread.CurrentThread.IsBackground = true; 
+        //        using (Process? proc = Process.Start(oneDriveSyncArguments))
+        //        {
+        //            proc?.WaitForExit();
+        //        }
+        //        
+        //        Thread.CurrentThread.IsBackground = true; 
+        //        using (Process? proc = Process.Start(oneDriveClientArguments))
+        //        {
+        //            proc?.WaitForExit();
+        //        }
+        //        
+        //        // FUTURE FEATURE: Copy files to new directory
+        //        // Note: This only copies files from the OneDrive directory, but does not delete the old ones to avoid potential data loss. I might add this as a warning toggle later, but for now it may cause more unintentional bloat.
+//
+        //        CompletedTask();
+        //        
+        //    }).Start();
+        //    
+//
+        //    void CompletedTask()
+        //    {
+        //        this.Dispatcher.Invoke(() =>
+        //        {
+        //            if (userDirKey != null)
+        //            {
+        //                userDirKey.SetValue("Desktop", "%USERPROFILE%/Desktop", RegistryValueKind.String);
+        //                userDirKey.SetValue("My Music", "%USERPROFILE%/Music", RegistryValueKind.String);
+        //                userDirKey.SetValue("My Pictures", "%USERPROFILE%/Pictures", RegistryValueKind.String);
+        //                userDirKey.SetValue("My Video", "%USERPROFILE%/Videos", RegistryValueKind.String);
+        //                userDirKey.SetValue("Personal", "%USERPROFILE%/Documents", RegistryValueKind.String);
+        //                userDirKey.Close();
+        //            }
+        //            
+        //            RmOneDriveButton.Content = "Done!";
+        //            InfoBox.Text = "Successfully removed Microsoft OneDrive.";
+        //            RmOneDriveButton.IsHitTestVisible = false;
+        //        });
+        //    }
+        //}
         
         private void RMWidgets_Click(object sender, RoutedEventArgs e)
         {
@@ -293,6 +294,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Removing Widgets app...";
             RmWidgetsButton.Content = "Running...";
+            RmWidgetsButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -312,7 +314,6 @@ namespace GoCleanYourComputer
                 {
                     RmWidgetsButton.Content = "Done!";
                     InfoBox.Text = "Successfully removed Widgets app.";
-                    RmWidgetsButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -323,6 +324,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Disabling Bing search results in Windows search...";
             NoBingSearchButton.Content = "Running...";
+            NoBingSearchButton.IsHitTestVisible = false;
             
             if (key != null)
             {
@@ -334,7 +336,6 @@ namespace GoCleanYourComputer
             
             NoBingSearchButton.Content = "Done!";
             InfoBox.Text = "Successfully disabled Bing search.";
-            NoBingSearchButton.IsHitTestVisible = false;
         }
 
         private void FixBootloaderRes_Click(object sender, RoutedEventArgs e)
@@ -351,6 +352,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Applying bootloader settings...";
             FixBootloaderResButton.Content = "Running...";
+            FixBootloaderResButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -370,7 +372,6 @@ namespace GoCleanYourComputer
                 {
                     FixBootloaderResButton.Content = "Done!";
                     InfoBox.Text = "Successfully fixed bootloader visual distortion.";
-                    FixBootloaderResButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -391,6 +392,7 @@ namespace GoCleanYourComputer
 
             InfoBox.Text = "Disabling invasive telemetry...";
             DisableTelemetryButton.Content = "Running...";
+            DisableTelemetryButton.IsHitTestVisible = false;
             
             if (key != null)
             {
@@ -416,7 +418,6 @@ namespace GoCleanYourComputer
                 {
                     DisableTelemetryButton.Content = "Done!";
                     InfoBox.Text = "Successfully disabled Windows telemetry.";
-                    DisableTelemetryButton.IsHitTestVisible = false;
                 });
             }
         }
@@ -435,17 +436,18 @@ namespace GoCleanYourComputer
             };
             
             // Prepare the process to run
-            var sfcArguments = new ProcessStartInfo
-            {
-                Arguments = "/scannow",
-                FileName = "SFC",
+            //var sfcArguments = new ProcessStartInfo
+            //{
+            //    Arguments = "/scannow",
+            //    FileName = "SFC",
                 // Hide console window
                 //WindowStyle = ProcessWindowStyle.Hidden,
                 //CreateNoWindow = true
-            };
+            //};
 
             InfoBox.Text = "Checking system image... (This could take a while)";
             RestoreSystemImageButton.Content = "Running...";
+            RestoreSystemImageButton.IsHitTestVisible = false;
 
             // Run command line with args
             new Thread(() => 
@@ -454,20 +456,21 @@ namespace GoCleanYourComputer
                 using (Process? proc = Process.Start(dismArguments))
                 {
                     proc?.WaitForExit();
+                    
+                    CompletedTask();
                 }
             }).Start();
             
             // Run command line with args
-            new Thread(() => 
-            {
-                Thread.CurrentThread.IsBackground = true; 
-                using (Process? proc = Process.Start(sfcArguments))
-                {
-                    proc?.WaitForExit();
-
-                    CompletedTask();
-                }
-            }).Start();
+            //new Thread(() => 
+            //{
+            //    Thread.CurrentThread.IsBackground = true; 
+            //    using (Process? proc = Process.Start(sfcArguments))
+            //    {
+            //        proc?.WaitForExit();
+            //        
+            //    }
+            //}).Start();
 
             void CompletedTask()
             {
@@ -475,7 +478,6 @@ namespace GoCleanYourComputer
                 {
                     RestoreSystemImageButton.Content = "Done!";
                     InfoBox.Text = "Successfully repaired system image.";
-                    RestoreSystemImageButton.IsHitTestVisible = false;
                 });
             }
         }

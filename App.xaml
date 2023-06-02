@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:GoCleanYourComputer"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Jetbrains Mono">pack://application:,,,/Fonts/#Jetbrains Mono</FontFamily>
     </Application.Resources>
 </Application>
