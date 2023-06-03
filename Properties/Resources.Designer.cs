@@ -61,6 +61,15 @@ namespace GoCleanYourComputer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .NET Framework 4.8.1.
+        /// </summary>
+        internal static string _NET_Version {
+            get {
+                return ResourceManager.GetString(".NET Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SpaceGameDev Software Developments.
         /// </summary>
         internal static string Company {
@@ -70,20 +79,20 @@ namespace GoCleanYourComputer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GPL-v3.0.
-        /// </summary>
-        internal static string Copyright {
-            get {
-                return ResourceManager.GetString("Copyright", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A simple computer cleaning tool for Windows..
         /// </summary>
         internal static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPL-v3.0.
+        /// </summary>
+        internal static string License {
+            get {
+                return ResourceManager.GetString("License", resourceCulture);
             }
         }
         
