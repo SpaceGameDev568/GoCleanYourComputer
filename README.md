@@ -31,7 +31,7 @@ Disables the Windows "Phone Home" telemetry that sends private data about you to
 
 ### Disable Bing Search Results
 
-Disables Bing results from appearing in Windows search because it sends everything you type to Microsoft. (And to be honest, nobody really even uses Bing anyways)
+Disables Bing results from appearing in Windows search because it sends everything you type to Microsoft. (And tbh, nobody really even uses Bing anyways)
 
 ### Fix Bootloader Distortion
 
