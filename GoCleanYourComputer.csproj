@@ -4,10 +4,21 @@
         <OutputType>WinExe</OutputType>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
-        <AssemblyVersion>1.1.0.0</AssemblyVersion>
-        <FileVersion>1.1.0</FileVersion>
+        <AssemblyVersion>1.2.0.0</AssemblyVersion>
+        <FileVersion>1.2.0</FileVersion>
         <TargetFramework>net481</TargetFramework>
         <LangVersion>11</LangVersion>
+        <Version>1.2.0</Version>
+        <Title>GoCleanYourComputer</Title>
+        <Description>A simple computer cleaning tool.</Description>
+        <Copyright>Copyright © 2023 Jesse Hodgson</Copyright>
+        <PackageProjectUrl>https://github.com/SpaceGameDev568/GoCleanYourComputer</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/SpaceGameDev568/GoCleanYourComputer/LICENSE.md</PackageLicenseUrl>
+        <PackageIcon>GoCleanYourComputerIcon-01.png</PackageIcon>
+        <RepositoryUrl>https://github.com/SpaceGameDev568/GoCleanYourComputer</RepositoryUrl>
+        <RepositoryType>Source Code</RepositoryType>
+        <AssemblyOriginatorKeyFile>GoCleanYourComputer_Key.snk</AssemblyOriginatorKeyFile>
+        <PublicSign>false</PublicSign>
     </PropertyGroup>
     <PropertyGroup>
         <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -15,6 +26,13 @@
         <NeutralLanguage>en</NeutralLanguage>
         <Authors>SpaceGameDev Software Developments</Authors>
         <SignAssembly>False</SignAssembly>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <PlatformTarget>AnyCPU</PlatformTarget>
+      <DocumentationFile></DocumentationFile>
     </PropertyGroup>
     <ItemGroup>
          <Resource Include="Fonts\JetBrainsMono.ttf" />
@@ -32,5 +50,11 @@
         <Generator>ResXFileCodeGenerator</Generator>
         <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="GoCleanYourComputerIcon-01.png">
+        <Pack>True</Pack>
+        <PackagePath></PackagePath>
+      </None>
     </ItemGroup>
 </Project>

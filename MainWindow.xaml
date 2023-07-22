@@ -32,6 +32,7 @@
         <Button x:Name="SysinfoButton" Width="200px" Height="50px" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SysinfoButton_Click">Get System Info</Button>
         <Button x:Name="RmTempFilesButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMTempFiles_Click">Remove Temporary Files</Button>
         <Button x:Name="CleanDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="CleanDrive_Click">Clean Windows Files</Button>
+        <Button x:Name="UpdatePacksButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="UpdatePacks_Click">Update Packages</Button>
         <Button x:Name="DefragButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Defrag_Click">Defragment Hard Drives</Button>
         <!--<Button x:Name="RmOneDriveButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMOneDrive_Click">Remove Microsoft OneDrive</Button>-->
         <Button x:Name="RmWidgetsButton" Width="200px" Height="50px" VerticalAlignment="Top" HorizontalAlignment="Center" Click="RMWidgets_Click">Remove Widgets</Button>

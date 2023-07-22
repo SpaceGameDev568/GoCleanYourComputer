@@ -141,4 +141,7 @@
   <data name="Copyright" xml:space="preserve">
     <value>Copyright © 2023 Jesse Hodgson</value>
   </data>
+  <data name="Version" xml:space="preserve">
+    <value>1.2.0</value>
+  </data>
 </root>

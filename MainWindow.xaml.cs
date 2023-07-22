@@ -153,6 +153,44 @@ namespace GoCleanYourComputer
             }
         }
         
+        private void UpdatePacks_Click(object sender, RoutedEventArgs e)
+        {
+            // Prepare the process to run
+            var processArguments = new ProcessStartInfo
+            {
+                Arguments = "update --all",
+                FileName = "winget.exe",
+                // Hide console window
+                //WindowStyle = ProcessWindowStyle.Hidden,
+                //CreateNoWindow = true
+            };
+
+            InfoBox.Text = "Updating Winget Packages...";
+            UpdatePacksButton.Content = "Running...";
+            UpdatePacksButton.IsHitTestVisible = false;
+
+            // Run command line with args
+            new Thread(() => 
+            {
+                Thread.CurrentThread.IsBackground = true; 
+                using (Process? proc = Process.Start(processArguments))
+                {
+                    proc?.WaitForExit();
+
+                    CompletedTask();
+                }
+            }).Start();
+
+            void CompletedTask()
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    UpdatePacksButton.Content = "Done!";
+                    InfoBox.Text = "Successfully updated Winget packages.";
+                });
+            }
+        }
+        
         private void Defrag_Click(object sender, RoutedEventArgs e)
         {
             // Prepare the process to run
