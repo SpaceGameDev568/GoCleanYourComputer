@@ -27,7 +27,7 @@ Removes the Widgets app for the taskbar that annoyingly pops up if you hover you
 
 ### Disable Telemetry
 
-Disables the Windows "Phone Home" telemetry that sends private data about you to Microsoft so they can server you creepy personalized ads.
+Disables the Windows "Phone Home" telemetry that sends private data about you to Microsoft so they can serve you creepy personalized ads.
 
 ### Disable Bing Search Results
 
